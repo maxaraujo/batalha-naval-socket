@@ -64,14 +64,14 @@ void preencheTNavio(int orientacao, int x, int y, int tabuleiro[][TAM_TABULEIRO]
         casa_final = y + tamanho;
         for(i = y; i < casa_final; i++)
         {
-            tabuleiro[x][i] = tamanho;
+            tabuleiro[i][y] = tamanho;
         };
     }
     else{
         casa_final = x + tamanho;
         for(i = x; i < casa_final; i++)
         {
-            tabuleiro[i][y] = tamanho;
+            tabuleiro[x][i] = tamanho;
         };
     };
 };

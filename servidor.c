@@ -69,14 +69,14 @@ int main (int argc, char *argv[])
         preencher_navio(NL, PORTA_AVIOES, 1);
         preencher_navio(NL, NAVIOS_TANQUE, 2);
         preencher_navio(NL,CONTRATORPEDOS, 3);
-        preencher_navio(NL, SUBMARINOS, 4);
+        preencher_navio(NL, SUBMARINOS, 3);
         exibir_tabuleiro(NL);
 
         if(send(client_s, buffer, strlen(buffer), 0)) {
             printf("Cliente conectado.\n Aguardando por mensagens do cliente...\n");
             do{
                 read(client_s, msg_read, MAXBUF);
-                printf("%s\n", msg_read);
+                //printf("%s\n", msg_read);
                 if(traduzir_tiro(NL, msg_read, 0) == 0){
                     buffer[0] = 'E';
                 }else{

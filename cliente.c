@@ -89,6 +89,7 @@ int main (int argc, char *argv[])
     int meu_jogo[TAM_TABULEIRO][TAM_TABULEIRO];
     char meu_mapa[TAM_TABULEIRO][TAM_TABULEIRO];
     int tiro_dado_l, tiro_dado_n;
+    int peca_cliente = 28, peca_servidor = 28;
     carregar_tabuleiro_de_um_arquivo(meu_jogo);
     inicializa_mapa_de_tiros(meu_mapa);
     printf("\n");    
@@ -112,6 +113,11 @@ int main (int argc, char *argv[])
                     meu_mapa[tiro_dado_l][tiro_dado_n] = 'X';
                 }else if (msg_read[0] == 'A'){
                     printf("Acertou!\n");
+                    peca_cliente--;
+                    if(peca_cliente==0){
+                        printf("Você venceu!\n");
+                        break;
+                    };
                     meu_mapa[tiro_dado_l][tiro_dado_n] = '*';
                 };
             };
@@ -120,6 +126,11 @@ int main (int argc, char *argv[])
             if(traduzir_tiro(meu_jogo, msg_read, 1) == 1){
                 printf("Acertou!\n");
                 msg_read[3] = 1;
+                peca_servidor--;
+                    if(peca_servidor==0){
+                        printf("Você perdeu!\n");
+                        break;
+                    };
             }else{
                 printf("Errou!\n");
                 msg_read[3] = 0;
